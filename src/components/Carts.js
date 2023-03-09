@@ -8,6 +8,17 @@ function OfferModal({children}) {
          </>
 }
 
+function Modal({message, children}) {
+    return  <Card style={{ width: '18rem' }}>
+       { message.img && <Card.Img variant="top" src={message.img} /> }
+              
+              <Card.Body>
+                <Card.Title>{message.h}</Card.Title>
+                <Card.Text>{message.text}</Card.Text>
+                <Button variant="primary">Go somewhere</Button>
+              </Card.Body>
+            </Card>
+}
 
 function Carts() {
   const message = [ {
@@ -15,21 +26,15 @@ function Carts() {
     h: "Card title",
     text: "Some quick example text to build on the card title and make up the bulk of the card's content."
   }, {
-    img: "#",
+   
     h: "Special title treatment",
     text: "With supportimg tetxt below as a natural lead-in to additional content."
   }
 ]
   return (
-    <OfferModal>
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
-      <Card.Body>
-        <Card.Title>{message[0].h}</Card.Title>
-        <Card.Text>{message[0].text}</Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-    </Card>
+    <OfferModal> 
+        <Modal message={message[0]} />
+        <Modal message={message[1]} />
     </OfferModal>
   );
 }
